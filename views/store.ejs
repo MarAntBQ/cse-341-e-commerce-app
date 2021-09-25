@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('includes/head.ejs')%>
+</head>
+<body>
+    <header>
+        <%- include('includes/header.ejs')%>
+    </header>
+    <main>
+        <% if (bookList.length > 0) {%>
+            <h1>My Products</h1>
+            <p>List of all the products...</p>
+            <div class="grid">
+                <% for (let book of bookList) { %>
+                <article class="card product-item">
+                    <header class="card__header">
+                        <h1 class="product__title"><%=book.BookName%></h1>
+                        <h1 class="product__title"><%=book.BookISBN%></h1>
+                        <h1 class="product__title"><%=book.BookAuthor%></h1>
+                        <h1 class="product__title"><%=book.BookPublishYear%></h1>
+                    </header>
+                    <form action="/admin/remove-book" method="POST">
+                        <button class="btn">Remove User</button>
+                        <input type="hidden" value="<%= book.BookISBN%>" name="BookToDelete">
+                      </form>
+                </article>
+                <% } %>
+            </div>
+            <% }  else {%>
+    <h1>No Products Found!</h1>
+                <% }%>
+    </main>
+    <footer>
+        <%- include('includes/footer.ejs')%>
+    </footer>
+</body>
+</html>
