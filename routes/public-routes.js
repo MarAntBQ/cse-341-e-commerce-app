@@ -10,7 +10,6 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
     const books = adminData.books;
-    //console.log(adminData.books);
     res.render('store', {
     bookList: books,
     SiteName: GeneralAppName,

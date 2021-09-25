@@ -8,7 +8,6 @@ const router = express.Router();
 
 const books = [];
 
-// /admin/add-product => GET
 router.get('/add-book', (req, res, next) => {
   res.render('add-book', {
     pageTitle: 'Add Book',
@@ -16,7 +15,7 @@ router.get('/add-book', (req, res, next) => {
     Navpath: 'AddNewBook'
   });
 });
-// /admin/add-product => POST
+
 router.post('/add-book', (req, res, next) => {
   books.push({
       BookName: req.body.BookName,
@@ -29,7 +28,6 @@ router.post('/add-book', (req, res, next) => {
 
 router.post('/remove-book', (req, res, next) => {
     const DeleteBook = req.body.BookToDelete;
-    //const index = books.BookISBN.indexOf(DeleteBook);
     for(var i = 0, len = books.length; i < len; i++) {
         if (books[i].BookISBN === DeleteBook) {
             books.splice(i, 1);

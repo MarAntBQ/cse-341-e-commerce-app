@@ -12,14 +12,13 @@ app.set('view engine', 'ejs');
 
 app.set('views', 'views');
 
-//It's importing form other  js folders
 const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/public-routes');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/admin', adminData.routes); //We created a subroute, it's really cool, I couldn't do it with htaccess
+app.use('/admin', adminData.routes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
