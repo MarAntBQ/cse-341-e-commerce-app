@@ -1,0 +1,306 @@
+@import url("https://framework.marbust.com/marbust-framework.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+* body {
+  min-width: 300px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Roboto", sans-serif;
+}
+
+header {
+  background: white;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  max-width: 1400px;
+  top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  height: 70px;
+  min-height: 70px;
+  max-height: 70px;
+  padding: 10px;
+  box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.12), inset 0 -1px 0 0 #dadce0;
+  z-index: 10;
+}
+header nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+header nav .logo-img {
+  width: 200px;
+  display: block;
+  transition: 0.3s;
+}
+header nav .logo-img:hover {
+  transform: scale(1.1);
+}
+header nav .logo-img img {
+  width: 100%;
+  display: block;
+  margin: 0px auto;
+}
+header nav ul {
+  display: flex;
+  list-style: none;
+}
+@media (max-width: 900px) {
+  header nav ul {
+    display: none;
+  }
+}
+@media (min-width: 900px) {
+  header nav ul #close-btn {
+    display: none;
+  }
+}
+header nav ul li a {
+  display: block;
+  padding: 10px 20px;
+  margin: 5px;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+  transition: 0.3s;
+}
+header nav ul li a:hover {
+  background: #4D2557;
+  color: white;
+}
+header nav ul li .active {
+  background: #2E0F35;
+  color: white;
+}
+header nav #menu-btn {
+  padding: 10px;
+  font-size: 30px;
+  color: #AA5E8B;
+  transition: 0.3s;
+}
+@media (min-width: 900px) {
+  header nav #menu-btn {
+    display: none;
+  }
+}
+header nav #menu-btn:hover {
+  background: #BF6D9A;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .active-menu {
+    display: block;
+    z-index: 12;
+    background: white;
+    width: 100%;
+    position: fixed;
+    max-width: 300px;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    overflow-y: auto;
+    box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.12), inset 0 -1px 0 0 #dadce0;
+    animation: 0.5s appearmenu ease;
+  }
+  .active-menu #close-btn {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    font-size: 30px;
+    margin-left: auto;
+    transition: 0.3s;
+  }
+  .active-menu #close-btn:hover {
+    background: #BF6D9A;
+    color: white;
+    cursor: pointer;
+  }
+  .active-menu li a {
+    margin: 0px;
+    padding: 15px 20px;
+  }
+
+  @keyframes appearmenu {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0px);
+    }
+  }
+  /*Code when the user close the menu, only change the class word and the animation*/
+  .desactivate-menu {
+    display: block;
+    z-index: 12;
+    background: white;
+    width: 100%;
+    position: fixed;
+    max-width: 300px;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    overflow-y: auto;
+    box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.12), inset 0 -1px 0 0 #dadce0;
+    animation: 0.5s dappearmenu ease;
+  }
+
+  @keyframes dappearmenu {
+    from {
+      transform: translateX(0px);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+  .desactivate-menu #close-btn {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    font-size: 30px;
+    margin-left: auto;
+    transition: 0.3s;
+  }
+
+  .desactivate-menu #close-btn:hover {
+    background: #BF6D9A;
+    color: white;
+    cursor: pointer;
+  }
+
+  .desactivate-menu li a {
+    margin: 0px;
+    padding: 15px 20px;
+  }
+}
+main {
+  margin-top: 70px;
+  background: white;
+  min-height: calc(100vh - 80px);
+}
+main .page-section {
+  padding: 70px 10% 30px 10%;
+}
+main .page-section h1 {
+  text-align: center;
+  color: #2E0F35;
+}
+
+.banner {
+  min-height: 50vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(../img/banner/banner.jpg);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  color: white;
+  padding: 20px 10%;
+}
+.banner h1, .banner p {
+  text-align: center;
+  width: 100%;
+}
+
+.not-found {
+  min-height: 100vh;
+}
+
+form {
+  width: 100%;
+}
+form input {
+  width: 100%;
+  margin: 5px 0px;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #D886AF;
+  border-radius: 5px;
+  font-family: inherit;
+}
+form button {
+  display: block;
+  width: 200px;
+  text-align: center;
+  margin: 10px auto;
+  padding: 15px 20px;
+  background: #4D2557;
+  color: white;
+  border: 0px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: inherit;
+}
+form button:hover {
+  background: #AA5E8B;
+}
+
+.book-box {
+  background: #f3f3f3;
+  padding: 10px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.book-box .icon-ctnr {
+  width: 75px;
+  height: 75px;
+  background: #AA5E8B;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+.book-box .icon-ctnr i {
+  font-size: 40px;
+}
+.book-box p {
+  text-align: center;
+  font-weight: bold;
+  margin: 5px 0px;
+  font-size: 18px;
+  border-bottom: 0.3px solid #BF6D9A;
+}
+.book-box form {
+  margin-top: 30px;
+}
+
+footer {
+  background: #4D2557;
+  color: white;
+  text-align: center;
+  padding: 30px 10px;
+}
+footer .copy-links {
+  font-size: 30px;
+}
+footer .copy-links a {
+  color: #D886AF;
+  margin: 0px 5px;
+  transition: 0.3s;
+}
+footer .copy-links a:hover {
+  color: white;
+}
+
+/*# sourceMappingURL=styles.css.map */

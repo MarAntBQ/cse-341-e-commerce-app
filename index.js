@@ -23,7 +23,7 @@ app.use('/admin', adminData.routes); //We created a subroute, it's really cool, 
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
-    res.status(404).render('404', {pageTitle: 'Page not Found!'});
+    res.status(404).render('404', {pageTitle: 'Page not Found!', SiteName: GeneralAppName, Navpath: 'Not Found'});
 });
 
 app.listen(3000);

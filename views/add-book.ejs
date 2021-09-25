@@ -8,14 +8,22 @@
         <%- include('includes/header.ejs')%>
     </header>
     <main>
-    <h1>Add Book!</h1>
-    <form action="/admin/add-book" method="POST">
-        <input type="text" placeholder="Insert Book Name" name="BookName">
-        <input type="text" placeholder="Insert ISBN" name="BookISBN">
-        <input type="text" placeholder="Insert Author" name="BookAuthor">
-        <input type="text" placeholder="Insert Publish Year" name="BookPublishYear">
-        <button type="submit">Add <i class="fas fa-book"></i></button>
-    </form>
+        <div class="banner">
+            <h1 class="fs70px fs-i-55px fs-m-40px fs-p-30px"><%= pageTitle %></h1>
+        </div>
+        <div class="page-section">
+            <div class="flex-s-a">
+                <div class="box-6">
+                    <form action="/admin/add-book" method="POST">
+                        <input type="text" placeholder="Insert Book Name" name="BookName">
+                        <input type="text" placeholder="Insert ISBN" name="BookISBN">
+                        <input type="text" placeholder="Insert Author" name="BookAuthor">
+                        <input type="text" placeholder="Insert Publish Year" name="BookPublishYear">
+                        <button type="submit">Add <i class="fas fa-book"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </main>
     <footer>
         <%- include('includes/footer.ejs')%>

@@ -1,3 +1,5 @@
+const GeneralAppName = "My E-commerce App";
+
 const path = require('path');
 
 const express = require('express');
@@ -10,6 +12,7 @@ const books = [];
 router.get('/add-book', (req, res, next) => {
   res.render('add-book', {
     pageTitle: 'Add Book',
+    SiteName: GeneralAppName,
     Navpath: 'AddNewBook'
   });
 });

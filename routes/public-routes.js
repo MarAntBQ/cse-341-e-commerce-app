@@ -1,3 +1,5 @@
+const GeneralAppName = "My E-commerce App";
+
 const path = require('path');
 
 const express = require('express');
@@ -11,7 +13,8 @@ router.get('/', (req, res, next) => {
     //console.log(adminData.books);
     res.render('store', {
     bookList: books,
-    pageTitle: 'Shop',
+    SiteName: GeneralAppName,
+    pageTitle: 'Our Shop',
     Navpath: 'Home'
     });
 });
