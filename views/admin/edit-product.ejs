@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../includes/head.ejs')%>
+</head>
+<body>
+    <header>
+        <%- include('../includes/header.ejs')%>
+    </header>
+    <main>
+        <div class="banner">
+            <h1 class="fs70px fs-i-55px fs-m-40px fs-p-30px"><%= pageTitle %></h1>
+        </div>
+        <div class="page-section">
+            <div class="flex-s-a">
+                <div class="box-6 box-i-7 box-m-9 box-p-12">
+                    <form action="/admin/<% if (editing) { %>edit-product<%  } else {  %>add-product<% }%>" method="POST">
+                        <input type="text" placeholder="Insert Book Name" name="title" required value="<% if (editing) { %><%= product.title %><%  }%>">
+                        <input type="number" placeholder="Insert ISBN" name="isbn" required value="<% if (editing) { %><%= product.isbn %><%  }%>">
+                        <input type="number" placeholder="Insert price" name="price" step="0.01" required value="<% if (editing) { %><%= product.price %><%  }%>">
+                        <input type="text" placeholder="Insert Author" name="author" required value="<% if (editing) { %><%= product.author%><%  }%>">
+                        <input type="number" placeholder="Insert Publish Year" name="pyear" required value="<% if (editing) { %><%= product.pyear %><%  }%>">
+                        <textarea name="description" rows="5" placeholder="Insert Book Description" required><% if (editing) { %><%= product.description %><%  }%></textarea>
+                        <% if (editing) { %>
+                            <input type="hidden" value="<%= product.id %>" name="productId">
+                        <% }%>
+                        <button type="submit"><% if (editing) { %>Edit<% } else { %>Add<% }%> <i class="fas fa-book"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <%- include('../includes/footer.ejs')%>
+    </footer>
+</body>
+</html>

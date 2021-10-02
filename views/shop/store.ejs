@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../includes/head.ejs')%>
+</head>
+
+<body>
+    <header>
+        <%- include('../includes/header.ejs')%>
+    </header>
+    <main>
+        <div class="banner">
+            <h1 class="fs70px fs-i-55px fs-m-40px fs-p-30px"><%= pageTitle %></h1>
+        </div>
+        <div class="page-section">
+            <% if (prods.length > 0) {%>
+                <h1 class="fs40px">Our Products</h1>
+                <p class="tac tbold mt15px mb15px">List of all available Books</p>
+                <div class="flex-s-a">
+                <% for (let product of prods) { %>
+                    <div class="box-4 box-m-6 box-p-12 book-box hover-shadow">
+                        <div class="icon-ctnr">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h2><%=product.title%></h2>
+                        <p class="price"><i class="fas fa-dollar-sign"></i> <%=product.price%></p>
+                        <p><i class="fas fa-barcode"></i> <strong>ISBN:</strong> <%=product.isbn%></p>
+                        <p><i class="fas fa-pencil-alt"></i> <strong>Author:</strong> <%=product.author%></p>
+                        <p><i class="fas fa-calendar-week"></i> <strong>Year:</strong> <%=product.pyear%></p>
+                        <p class="lh2em"><i class="fas fa-info"></i> <strong>Description:</strong> <%=product.description%></p>
+                        <a href="/products/<%= product.id %>" class="btn">Details <i class="fas fa-info-circle"></i></a>
+                        <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                    </div>
+                <% } %>
+            </div>
+                <% }  else {%>
+                <h1>No Products Found!</h1>
+                <% }%>
+        </div>
+    </main>
+    <footer>
+        <%- include('../includes/footer.ejs')%>
+    </footer>
+</body>
+
+</html>

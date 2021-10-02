@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../includes/head.ejs')%>
+</head>
+
+<body>
+    <header>
+        <%- include('../includes/header.ejs')%>
+    </header>
+    <main>
+        <div class="banner">
+            <h1 class="fs70px fs-i-55px fs-m-40px fs-p-30px"><%= pageTitle %></h1>
+        </div>
+        <div class="page-section cart-ctnr">
+            <% if (products.length > 0) { %>
+            <% products.forEach(p => { %>
+            <div class="cart-row flex-s-b">
+                <div class="left flex-vc p10px">
+                    <p class="fs20px"><strong><%= p.productData.title %></strong></p>
+                    <p><i class="fas fa-dollar-sign"></i> <strong>Price:</strong> $<%=p.productData.price%></p>
+                    <p><i class="fas fa-barcode"></i> <strong>ISBN:</strong> <%=p.productData.isbn%></p>
+                    <p><i class="fas fa-pencil-alt"></i> <strong>Author:</strong> <%=p.productData.author%></p>
+
+                    <p><i class="fas fa-calendar-week"></i> <strong>Year:</strong> <%=p.productData.pyear%></p>
+                
+                    <p class="lh2em"><i class="fas fa-info"></i> <strong>Description:</strong> <%=p.productData.description%>
+                    </p>
+                </div>
+                <div class="right minw200px">
+                    <p class="tac fs40px">x <strong><%= p.qty %></strong></p>
+                    <form action="/cart-delete-item" method="POST">
+                        <input type="hidden" value="<%= p.productData.id %>" name="productId">
+                        <button class="btn" type="submit">Delete <i class="fas fa-trash"></i></button>
+                    </form>
+                </div>
+            </div>
+            <% }) %>
+
+            <% } else { %>
+            <h1>No Products in Cart!</h1>
+            <% } %>
+        </div>
+    </main>
+    <footer>
+        <%- include('../includes/footer.ejs')%>
+    </footer>
+</body>
+
+</html>

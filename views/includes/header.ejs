@@ -2,8 +2,12 @@
     <a href="/" class="logo-img"><img src="/img/header.png" alt="Logo"></a>
     <ul>
         <i class="far fa-times-circle" id="close-btn" onclick="destroymenu()"></i>
-        <li><a class="<%= Navpath === 'Home' ? 'active' : '' %>" href="/">Home</a></li>
-        <li><a class="<%= Navpath === 'AddNewBook' ? 'active' : '' %>" href="/admin/add-book">Add new Book</a></li>
+        <li><a class="<%= Navpath === 'Home' ? 'active' : '' %>" href="/">Home <i class="fas fa-home"></i></a></li>
+        <li><a class="<%= Navpath === 'Products' ? 'active' : '' %>" href="/products">Products <i class="fas fa-list"></i></a></li>
+        <li><a class="<%= Navpath === 'Cart' ? 'active' : '' %>" href="/cart">Cart <i class="fas fa-shopping-cart"></i></a></li>
+        <li><a class="<%= Navpath === 'Orders' ? 'active' : '' %>" href="/orders">Orders <i class="fas fa-store"></i></a></li>
+        <li><a class="<%= Navpath === 'AddNewProduct' ? 'active' : '' %>" href="/admin/add-product">Add Product <i class="fas fa-plus-circle"></i></a></li>
+        <li><a class="<%= Navpath === 'AdminProducts' ? 'active' : '' %>" href="/admin/products">Ad. Products <i class="fas fa-list"></i></a></li>
     </ul>
     <i class="fas fa-chevron-down" id="menu-btn" onclick="menudisplayer()"></i>
 </nav>

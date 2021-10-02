@@ -6,6 +6,7 @@ $color4: #D886AF;
 
 @import url("https://framework.marbust.com/marbust-framework.css");
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -63,11 +64,11 @@ header {
             display: flex;
             list-style: none;
 
-            @media (max-width: 900px) {
+            @media (max-width: 1100px) {
                 display: none;
             }
 
-            @media (min-width: 900px) {
+            @media (min-width: 1100px) {
                 #close-btn {
                     display: none;
                 }
@@ -102,7 +103,7 @@ header {
             color: $color2;
             transition: 0.3s;
 
-            @media (min-width: 900px) {
+            @media (min-width: 1100px) {
                 display: none;
             }
 
@@ -115,7 +116,7 @@ header {
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
     .active-menu {
         display: block;
         z-index: 12;
@@ -223,8 +224,10 @@ main {
     margin-top: 70px;
     background: white;
     min-height: calc(100vh - 80px);
+
     .page-section {
         padding: 70px 10% 30px 10%;
+
         h1 {
             text-align: center;
             color: $color0;
@@ -245,7 +248,9 @@ main {
     flex-wrap: wrap;
     color: white;
     padding: 20px 10%;
-    h1, p {
+
+    h1,
+    p {
         text-align: center;
         width: 100%;
     }
@@ -257,6 +262,7 @@ main {
 
 form {
     width: 100%;
+
     input {
         width: 100%;
         margin: 5px 0px;
@@ -265,7 +271,30 @@ form {
         border: 1px solid $color4;
         border-radius: 5px;
         font-family: inherit;
+
+        &:focus {
+            border-color: #2E0F35;
+        }
     }
+
+    textarea {
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+        max-height: 25vh;
+        min-height: 25vh;
+        margin: 5px 0px;
+        padding: 5px;
+        font-size: 16px;
+        border: 1px solid $color4;
+        border-radius: 5px;
+        font-family: inherit;
+
+        &:focus {
+            border-color: #2E0F35;
+        }
+    }
+
     button {
         display: block;
         max-width: 200px;
@@ -279,6 +308,7 @@ form {
         cursor: pointer;
         transition: 0.3s;
         font-family: inherit;
+
         &:hover {
             background: $color2;
         }
@@ -287,9 +317,18 @@ form {
 
 .book-box {
     background: rgb(243, 243, 243);
-    padding: 10px;
-    border-radius: 5px;
+    padding: 15px 0px;
+    border-radius: 10px;
     transition: 0.3s;
+
+    h2 {
+        font-size: 23px;
+        background: $color1;
+        color: white;
+        text-align: center;
+        padding: 20px 10px;
+    }
+
     .icon-ctnr {
         width: 75px;
         height: 75px;
@@ -301,19 +340,69 @@ form {
         margin: 0 auto;
         border-radius: 50%;
         margin-bottom: 15px;
+
         i {
             font-size: 40px;
         }
     }
+
     p {
-        text-align: center;
-        font-weight: bold;
+        //text-align: center;
+        //font-weight: bold;
         margin: 5px 0px;
         font-size: 18px;
         border-bottom: 0.3px solid $color3;
+        padding: 10px 15px;
+
+        i {
+            color: $color1;
+        }
     }
+
+    .price {
+        font-size: 40px;
+        font-weight: bold;
+        color: $color0;
+        text-align: center;
+
+        i {
+            color: $color0;
+        }
+    }
+
     form {
-        margin-top: 30px;
+        button {
+            background: white;
+            border: 1px solid $color0;
+            color: $color0;
+            font-size: 20px;
+
+            &:hover {
+                background: $color2;
+                color: white;
+                border: 1px solid $color2;
+            }
+        }
+    }
+}
+
+.btn {
+    display: block;
+    max-width: 200px;
+    width: 80%;
+    text-align: center;
+    margin: 10px auto;
+    padding: 15px 20px;
+    background: $color1;
+    color: white;
+    border: 0px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: inherit;
+    text-decoration: none;
+
+    &:hover {
+        background: $color2;
     }
 }
 
@@ -322,14 +411,71 @@ footer {
     color: white;
     text-align: center;
     padding: 30px 10px;
+
     .copy-links {
         font-size: 30px;
+
         a {
             color: $color4;
             margin: 0px 5px;
             transition: 0.3s;
+
             &:hover {
                 color: white;
+            }
+        }
+    }
+}
+
+
+.product-detail {
+    text-align: center;
+
+    .price {
+        color: $color0;
+    }
+
+    p {
+
+        i,
+        strong {
+            color: $color1;
+        }
+    }
+}
+
+.cart-ctnr {
+    .cart-row {
+        //background: gray;
+        margin: 10px 0px;
+        background: #efefef;
+        padding: 20px 5px;
+        flex-wrap: nowrap;
+        align-items: center;
+        @media (max-width: 850px) {
+            flex-wrap: wrap;
+        }
+
+        .left {
+            @media (max-width: 850px) {
+                width: 100%;
+            }
+            line-height: 2em;
+        }
+        p {
+            color: #535353;
+            width: 100%;
+
+            strong {
+                color: #1f1f1f;
+            }
+            @media (max-width: 850px) {
+                text-align: center;
+            }
+        }
+        .right {
+            @media (max-width: 850px) {
+                width: 100%;
             }
         }
     }

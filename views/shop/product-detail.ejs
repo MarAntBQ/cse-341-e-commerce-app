@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../includes/head.ejs')%>
+</head>
+
+<body>
+    <header>
+        <%- include('../includes/header.ejs')%>
+    </header>
+    <main>
+        <div class="banner">
+            <h1 class="fs70px fs-i-55px fs-m-40px fs-p-30px"><%= pageTitle %></h1>
+        </div>
+        <div class="page-section product-detail mauto maxw900px w90p fs30px fs-i-25px fs-m-23px fs-p-20px lh2em">
+            <p class="price fs60px tbold mb15px"><i class="fas fa-dollar-sign"></i> <%=product.price%></p>
+            <hr>
+            <p><i class="fas fa-barcode"></i> <strong>ISBN:</strong> <%=product.isbn%></p>
+            <hr>
+            <p><i class="fas fa-pencil-alt"></i> <strong>Author:</strong> <%=product.author%></p>
+            <hr>
+            <p><i class="fas fa-calendar-week"></i> <strong>Year:</strong> <%=product.pyear%></p>
+            <hr>
+            <p class="lh2em"><i class="fas fa-info"></i> <strong>Description:</strong> <%=product.description%></p>
+            <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+        </div>
+    </main>
+    <footer>
+        <%- include('../includes/footer.ejs')%>
+    </footer>
+</body>
+
+</html>
