@@ -4,3 +4,8 @@ npm install --save-dev nodemon
 
 
 //To install again the node_modules is => npm install
+
+
+//For MongoDb
+
+npm install --save mongodb
