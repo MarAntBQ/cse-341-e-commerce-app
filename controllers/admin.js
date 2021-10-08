@@ -18,15 +18,9 @@ exports.postAddProduct = (req, res, next) => {
   const description = req.body.description;
   const author = req.body.author;
   const pyear = req.body.pyear;
-  req.user
-    .createProduct({
-      title: title,
-      price: price,
-      isbn: isbn,
-      author: author,
-      pyear: pyear,
-      description: description
-    })
+  const product = new Product(title, isbn, price, description, author, pyear);
+  product
+    .save()
     .then(result => {
       // console.log(result);
       console.log('Created Product');
@@ -70,16 +64,18 @@ exports.postAddProduct = (req, res, next) => {
 //   res.redirect('/admin/products');
 // };
 
-// exports.getProducts = (req, res, next) => {
-//   Product.fetchAll(products => {
-//     res.render('admin/products', {
-//       prods: products,
-//       SiteName: GeneralAppName,
-//       pageTitle: 'Admin Products',
-//       Navpath: 'AdminProducts'
-//     });
-//   });
-// };
+exports.getProducts = (req, res, next) => {
+  Product.fetchAll()
+  .then(products => {
+    res.render('admin/products', {
+      prods: products,
+      SiteName: GeneralAppName,
+      pageTitle: 'Admin Products',
+      Navpath: 'AdminProducts'
+    });
+  })
+  .catch(err => console.log(err));
+};
 
 // exports.postDeleteProduct = (req, res, next) => {
 //   const prodId = req.body.productId;
