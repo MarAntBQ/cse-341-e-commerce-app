@@ -13,8 +13,23 @@
         <div class="banner">
             <h1 class="fs70px fs-i-55px fs-m-40px fs-p-30px"><%= pageTitle %></h1>
         </div>
-        <div class="page-section cart-ctnr">
-           <h1>In Construction...!!</h1>
+        <div class="page-section">
+            <% if (orders.length <= 0) { %>
+                <h1>Nothing there!</h1>
+            <% } else { %>
+                <div class="orders">
+                    <% orders.forEach(order => { %>
+                        <div class="order-row">
+                            <h3>Order - # <%= order._id %></h3>
+                            <ul class="products">
+                                <% order.items.forEach(product => { %>
+                                    <li class="orders__products-item"><%= product.title %> (<%= product.quantity %>)</li>
+                                <% }); %>
+                            </ul>
+                        </div>
+                    <% }); %>
+                </div>
+            <% } %>
         </div>
     </main>
     <footer>

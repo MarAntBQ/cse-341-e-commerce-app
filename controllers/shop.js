@@ -64,28 +64,46 @@ exports.postCart = (req, res, next) => {
   const prodId = req.body.productId;
   Product.findById(prodId)
     .then(product => {
-      req.user.addToCart(product);
-      res.redirect('/cart');
+      return req.user.addToCart(product);
     })
     .then(result => {
       console.log(result);
+      res.redirect('/cart');
     });
 };
 
 exports.postCartDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
-  Product.findById(prodId, product => {
-    Cart.deleteProduct(prodId, product.price);
-    res.redirect('/cart');
-  });
+  req.user
+    .deleteItemFromCart(prodId)
+    .then(result => {
+      res.redirect('/cart');
+    })
+    .catch(err => console.log(err));
+};
+
+exports.postOrder = (req, res, next) => {
+  let fetchedCart;
+  req.user
+    .addOrder()
+    .then(result => {
+      res.redirect('/orders');
+    })
+    .catch(err => console.log(err));
 };
 
 exports.getOrders = (req, res, next) => {
-  res.render('shop/orders', {
-    SiteName: GeneralAppName,
-    Navpath: 'Orders',
-    pageTitle: 'Your Orders'
-  });
+  req.user
+    .getOrders()
+    .then(orders => {
+      res.render('shop/orders', {
+        SiteName: GeneralAppName,
+        Navpath: 'Orders',
+        pageTitle: 'Your Orders',
+        orders: orders
+      });
+    })
+    .catch(err => console.log(err));
 };
 
 exports.getCheckout = (req, res, next) => {

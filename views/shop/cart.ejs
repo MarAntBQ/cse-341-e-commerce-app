@@ -14,7 +14,7 @@
             <h1 class="fs70px fs-i-55px fs-m-40px fs-p-30px"><%= pageTitle %></h1>
         </div>
         <div class="page-section cart-ctnr">
-            <% if (products.length > 0) { %>
+            <% if (products.length > 0) { var TotalMoneySum = 0;%>
             <% products.forEach(p => { %>
             <div class="cart-row flex-s-b">
                 <div class="left flex-vc p10px">
@@ -29,7 +29,7 @@
                     </p>
                 </div>
                 <div class="right minw200px">
-                    <p class="tac fs40px">x <strong><%= p.quantity %></strong><br>($ <%= p.price * p.quantity %>)</p>
+                    <p class="tac fs40px">x <strong><%= p.quantity %></strong><br>($ <%= p.price * p.quantity %> <%TotalMoneySum = TotalMoneySum + (p.price * p.quantity) %>)</p>
                     <form action="/cart-delete-item" method="POST">
                         <input type="hidden" value="<%= p._id %>" name="productId">
                         <button class="btn" type="submit">Delete <i class="fas fa-trash"></i></button>
@@ -37,7 +37,10 @@
                 </div>
             </div>
             <% }) %>
-
+            <form action="/create-order" method="POST">
+                <h2 class="tac fs60px fs-i-50px fs-m-40px fs-p-30px mt15px mb15px">Total: $ <%= TotalMoneySum %></h2>
+                <button class="btn" type="submit">Order Now! <i class="fas fa-shopping-bag"></i></button>
+            </form>
             <% } else { %>
             <h1>No Products in Cart!</h1>
             <% } %>

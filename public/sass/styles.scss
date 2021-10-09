@@ -480,3 +480,23 @@ footer {
         }
     }
 }
+
+.order-row {
+    background: #efefef;
+    margin: 10px 0px;
+    padding: 30px 10px;
+    border-radius: 5px;
+    h3 {
+        text-align: center;
+        color: $color3;
+    }
+    ul {
+        list-style: none;
+        padding: 10px;
+        li {
+            padding: 10px;
+            border: 1px solid $color2;
+            margin: 10px 0px;
+        }
+    }
+}
