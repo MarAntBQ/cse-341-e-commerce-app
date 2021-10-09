@@ -9,3 +9,7 @@ npm install --save-dev nodemon
 //For MongoDb
 
 npm install --save mongodb
+
+//Now Let's install Mongoose
+
+npm install --save mongoose

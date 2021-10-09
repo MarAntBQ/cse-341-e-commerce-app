@@ -3,6 +3,7 @@ const path = require('path');
 const GeneralAppName = "My E-commerce App";
 
 const express = require('express');
+const cors = require('cors');
 
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -36,9 +37,25 @@ app.use(shopRoutes);
 
 app.use(errorController.get404);
 
+const corsOptions = {
+  origin: "https://cse341.fullstackwebdeveloper.xyz",
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
+const options = {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  family: 4
+};
+
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://MarAntBQ:twG4DxEpNKuZ8Ooq@cluster0.wjhk8.mongodb.net/shop?retryWrites=true&w=majority";
+
 mongoose
 .connect(
-  'mongodb+srv://MarAntBQ:twG4DxEpNKuZ8Ooq@cluster0.wjhk8.mongodb.net/shop?retryWrites=true&w=majority'
+    MONGODB_URL, options
   )
 .then(result => {
   console.log('connected');

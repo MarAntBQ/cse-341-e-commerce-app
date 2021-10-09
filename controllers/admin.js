@@ -18,15 +18,14 @@ exports.postAddProduct = (req, res, next) => {
   const description = req.body.description;
   const author = req.body.author;
   const pyear = req.body.pyear;
-  const product = new Product(
-    title, 
-    isbn, 
-    price, 
-    description, 
-    author, 
-    pyear, 
-    null, 
-    req.user._id);
+  const product = new Product({
+    title: title, 
+    isbn: isbn, 
+    price: price, 
+    description: description, 
+    author: author, 
+    pyear: pyear, 
+  });
   product
     .save()
     .then(result => {
