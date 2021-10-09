@@ -22,7 +22,7 @@
                         <input type="number" placeholder="Insert Publish Year" name="pyear" required value="<% if (editing) { %><%= product.pyear %><%  }%>">
                         <textarea name="description" rows="5" placeholder="Insert Book Description" required><% if (editing) { %><%= product.description %><%  }%></textarea>
                         <% if (editing) { %>
-                            <input type="hidden" value="<%= product.id %>" name="productId">
+                            <input type="hidden" value="<%= product._id %>" name="productId">
                         <% }%>
                         <button type="submit"><% if (editing) { %>Edit<% } else { %>Add<% }%> <i class="fas fa-book"></i></button>
                     </form>
