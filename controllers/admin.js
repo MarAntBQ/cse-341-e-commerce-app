@@ -1,8 +1,6 @@
 const GeneralAppName = "MABooks";
-const mongodb = require('mongodb');
-const Product = require('../models/product');
 
-const ObjectId = mongodb.ObjectId;
+const Product = require('../models/product');
 
 exports.getAddProduct = (req, res, next) => {
   res.render('admin/edit-product', {
@@ -20,7 +18,15 @@ exports.postAddProduct = (req, res, next) => {
   const description = req.body.description;
   const author = req.body.author;
   const pyear = req.body.pyear;
-  const product = new Product(title, isbn, price, description, author, pyear);
+  const product = new Product(
+    title, 
+    isbn, 
+    price, 
+    description, 
+    author, 
+    pyear, 
+    null, 
+    req.user._id);
   product
     .save()
     .then(result => {
@@ -65,13 +71,14 @@ exports.postEditProduct = (req, res, next) => {
   const author = req.body.author;
   const pyear = req.body.pyear;
   const product = new Product(
-    updatedTitle, 
-    isbn, 
-    updatedPrice, 
-    updatedDesc, 
-    author, 
-    pyear, 
-    new ObjectId(prodId));
+    updatedTitle,
+    isbn,
+    updatedPrice,
+    updatedDesc,
+    author,
+    pyear,
+    prodId
+  );
   product
     .save()
     .then(result => {
@@ -94,8 +101,12 @@ exports.getProducts = (req, res, next) => {
     .catch(err => console.log(err));
 };
 
-// exports.postDeleteProduct = (req, res, next) => {
-//   const prodId = req.body.productId;
-//   Product.deleteById(prodId);
-//   res.redirect('/admin/products');
-// };
+exports.postDeleteProduct = (req, res, next) => {
+  const prodId = req.body.productId;
+  Product.deleteById(prodId)
+    .then(() => {
+      console.log('DESTROYED PRODUCT');
+      res.redirect('/admin/products');
+    })
+    .catch(err => console.log(err));
+};
