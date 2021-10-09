@@ -3,8 +3,9 @@ const GeneralAppName = "MABooks";
 const Product = require('../models/product');
 
 exports.getProducts = (req, res, next) => {
-  Product.fetchAll()
+  Product.find()
     .then(products => {
+      console.log(products);
       res.render('shop/store', {
         SiteName: GeneralAppName,
         prods: products,
@@ -32,7 +33,7 @@ exports.getProduct = (req, res, next) => {
 };
 
 exports.getIndex = (req, res, next) => {
-  Product.fetchAll()
+  Product.find()
     .then(products => {
       res.render('shop/index', {
         SiteName: GeneralAppName,
