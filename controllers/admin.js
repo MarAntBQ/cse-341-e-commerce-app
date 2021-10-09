@@ -19,12 +19,13 @@ exports.postAddProduct = (req, res, next) => {
   const author = req.body.author;
   const pyear = req.body.pyear;
   const product = new Product({
-    title: title, 
-    isbn: isbn, 
-    price: price, 
-    description: description, 
-    author: author, 
-    pyear: pyear, 
+    title: title,
+    isbn: isbn,
+    price: price,
+    description: description,
+    author: author,
+    pyear: pyear,
+    userId: req.user
   });
   product
     .save()
@@ -69,15 +70,15 @@ exports.postEditProduct = (req, res, next) => {
   const author = req.body.author;
   const pyear = req.body.pyear;
   Product.findById(prodId).then(product => {
-    product.title = updatedTitle;
-    product.isbn = isbn;
-    product.price = updatedPrice;
-    product.description = updatedDesc;
-    product.author = author;
-    product.pyear = pyear;
-    return product.save();
-  })
-  .then(result => {
+      product.title = updatedTitle;
+      product.isbn = isbn;
+      product.price = updatedPrice;
+      product.description = updatedDesc;
+      product.author = author;
+      product.pyear = pyear;
+      return product.save();
+    })
+    .then(result => {
       console.log('UPDATED PRODUCT!');
       res.redirect('/admin/products');
     })
@@ -86,7 +87,10 @@ exports.postEditProduct = (req, res, next) => {
 
 exports.getProducts = (req, res, next) => {
   Product.find()
+  //.select('title price -_id')
+ //   .populate('userId', 'name')
     .then(products => {
+      console.log(products);
       res.render('admin/products', {
         prods: products,
         SiteName: GeneralAppName,

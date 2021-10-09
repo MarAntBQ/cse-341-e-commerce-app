@@ -18,20 +18,20 @@
             <% products.forEach(p => { %>
             <div class="cart-row flex-s-b">
                 <div class="left flex-vc p10px">
-                    <p class="fs20px"><strong><%= p.title %></strong></p>
-                    <p><i class="fas fa-dollar-sign"></i> <strong>Price:</strong> $<%=p.price%></p>
-                    <p><i class="fas fa-barcode"></i> <strong>ISBN:</strong> <%=p.isbn%></p>
-                    <p><i class="fas fa-pencil-alt"></i> <strong>Author:</strong> <%=p.author%></p>
+                    <p class="fs20px"><strong><%= p.productId.title %></strong></p>
+                    <p><i class="fas fa-dollar-sign"></i> <strong>Price:</strong> $<%=p.productId.price%></p>
+                    <p><i class="fas fa-barcode"></i> <strong>ISBN:</strong> <%=p.productId.isbn%></p>
+                    <p><i class="fas fa-pencil-alt"></i> <strong>Author:</strong> <%=p.productId.author%></p>
 
-                    <p><i class="fas fa-calendar-week"></i> <strong>Year:</strong> <%=p.pyear%></p>
+                    <p><i class="fas fa-calendar-week"></i> <strong>Year:</strong> <%=p.productId.pyear%></p>
                 
-                    <p class="lh2em"><i class="fas fa-info"></i> <strong>Description:</strong> <%=p.description%>
+                    <p class="lh2em"><i class="fas fa-info"></i> <strong>Description:</strong> <%=p.productId.description%>
                     </p>
                 </div>
                 <div class="right minw200px">
-                    <p class="tac fs40px">x <strong><%= p.quantity %></strong><br>($ <%= p.price * p.quantity %> <%TotalMoneySum = TotalMoneySum + (p.price * p.quantity) %>)</p>
+                    <p class="tac fs40px">x <strong><%= p.quantity %></strong><br>($ <%= p.productId.price * p.quantity %> <%TotalMoneySum = TotalMoneySum + (p.productId.price * p.quantity) %>)</p>
                     <form action="/cart-delete-item" method="POST">
-                        <input type="hidden" value="<%= p._id %>" name="productId">
+                        <input type="hidden" value="<%= p.productId._id %>" name="productId">
                         <button class="btn" type="submit">Delete <i class="fas fa-trash"></i></button>
                     </form>
                 </div>
