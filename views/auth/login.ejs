@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../includes/head.ejs')%>
+</head>
+
+<body>
+    <header>
+        <%- include('../includes/header.ejs')%>
+    </header>
+    <main>
+        <div class="banner">
+            <h1 class="fs70px fs-i-55px fs-m-40px fs-p-30px"><%= pageTitle %></h1>
+        </div>
+        <div class="page-section">
+            <div class="flex-s-a">
+                <div class="box-6 box-i-7 box-m-9 box-p-12">
+                    <form action="/login" method="POST">
+                        <input type="email" placeholder="Insert your Email" name="email" required>
+                        <input type="password" placeholder="Insert password" name="password" required>
+                        <button type="submit">Login <i class="fas fa-key"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <%- include('../includes/footer.ejs')%>
+    </footer>
+</body>
+
+</html>

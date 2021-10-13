@@ -7,7 +7,8 @@ exports.getAddProduct = (req, res, next) => {
     SiteName: GeneralAppName,
     pageTitle: 'Add Product',
     Navpath: 'AddNewProduct',
-    editing: false
+    editing: false,
+    isAuthenticated: req.isLoggedIn
   });
 };
 
@@ -55,7 +56,8 @@ exports.getEditProduct = (req, res, next) => {
         Navpath: '/admin/edit-product',
         SiteName: GeneralAppName,
         editing: editMode,
-        product: product
+        product: product,
+        isAuthenticated: req.isLoggedIn
       });
     })
     .catch(err => console.log(err));
@@ -95,7 +97,8 @@ exports.getProducts = (req, res, next) => {
         prods: products,
         SiteName: GeneralAppName,
         pageTitle: 'Admin Products',
-        Navpath: 'AdminProducts'
+        Navpath: 'AdminProducts',
+        isAuthenticated: req.isLoggedIn
       });
     })
     .catch(err => console.log(err));
