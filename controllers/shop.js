@@ -42,8 +42,7 @@ exports.getIndex = (req, res, next) => {
         SiteName: GeneralAppName,
         prods: products,
         pageTitle: 'MABooks',
-        Navpath: 'Home',
-        isAuthenticated: req.session.isLoggedIn
+        Navpath: 'Home'
       });
     })
     .catch(err => {

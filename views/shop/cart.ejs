@@ -33,6 +33,7 @@
                     <form action="/cart-delete-item" method="POST">
                         <input type="hidden" value="<%= p.productId._id %>" name="productId">
                         <button class="btn" type="submit">Delete <i class="fas fa-trash"></i></button>
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                     </form>
                 </div>
             </div>
@@ -40,6 +41,7 @@
             <form action="/create-order" method="POST">
                 <h2 class="tac fs60px fs-i-50px fs-m-40px fs-p-30px mt15px mb15px">Total: $ <%= TotalMoneySum %></h2>
                 <button class="btn" type="submit">Order Now! <i class="fas fa-shopping-bag"></i></button>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             </form>
             <% } else { %>
             <h1>No Products in Cart!</h1>
