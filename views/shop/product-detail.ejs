@@ -23,7 +23,9 @@
             <p><i class="fas fa-calendar-week"></i> <strong>Year:</strong> <%=product.pyear%></p>
             <hr>
             <p class="lh2em"><i class="fas fa-info"></i> <strong>Description:</strong> <%=product.description%></p>
-            <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+            <% if (isAuthenticated) { %>
+                <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                <% } %>
         </div>
     </main>
     <footer>

@@ -14,7 +14,7 @@
         <div class="page-section">
             <div class="flex-s-a">
                 <div class="box-6 box-i-7 box-m-9 box-p-12">
-                    <form action="/admin/<% if (editing) { %>edit-product<%  } else {  %>add-product<% }%>" method="POST">
+                    <form class="page-form" action="/admin/<% if (editing) { %>edit-product<%  } else {  %>add-product<% }%>" method="POST">
                         <input type="text" placeholder="Insert Book Name" name="title" required value="<% if (editing) { %><%= product.title %><%  }%>">
                         <input type="number" placeholder="Insert ISBN" name="isbn" required value="<% if (editing) { %><%= product.isbn %><%  }%>">
                         <input type="number" placeholder="Insert price" name="price" step="0.01" required value="<% if (editing) { %><%= product.price %><%  }%>">

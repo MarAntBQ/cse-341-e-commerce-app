@@ -80,6 +80,25 @@ header nav ul li .active {
   background: #2E0F35;
   color: white;
 }
+header nav ul form {
+  display: flex;
+  align-items: center;
+}
+header nav ul form button {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+  transition: 0.3s;
+  border: 0px;
+  background: white;
+}
+header nav ul form button:hover {
+  background: #4D2557;
+  color: white;
+  cursor: pointer;
+}
 header nav #menu-btn {
   padding: 10px;
   font-size: 30px;
@@ -131,6 +150,12 @@ header nav #menu-btn:hover {
   .active-menu li a {
     margin: 0px;
     padding: 15px 20px;
+  }
+  .active-menu form {
+    justify-content: center;
+  }
+  .active-menu form button {
+    width: 100%;
   }
 
   @keyframes appearmenu {
@@ -225,10 +250,10 @@ main .page-section h1 {
   min-height: 100vh;
 }
 
-form {
+.page-form {
   width: 100%;
 }
-form input {
+.page-form input {
   width: 100%;
   margin: 5px 0px;
   padding: 5px;
@@ -237,10 +262,10 @@ form input {
   border-radius: 5px;
   font-family: inherit;
 }
-form input:focus {
+.page-form input:focus {
   border-color: #2E0F35;
 }
-form textarea {
+.page-form textarea {
   width: 100%;
   max-width: 100%;
   min-width: 100%;
@@ -253,10 +278,10 @@ form textarea {
   border-radius: 5px;
   font-family: inherit;
 }
-form textarea:focus {
+.page-form textarea:focus {
   border-color: #2E0F35;
 }
-form button {
+.page-form button {
   display: block;
   max-width: 200px;
   width: 80%;
@@ -270,7 +295,7 @@ form button {
   transition: 0.3s;
   font-family: inherit;
 }
-form button:hover {
+.page-form button:hover {
   background: #AA5E8B;
 }
 

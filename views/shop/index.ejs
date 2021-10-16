@@ -30,7 +30,9 @@
                         <p><i class="fas fa-calendar-week"></i> <strong>Year:</strong> <%=product.pyear%></p>
                         <p class="lh2em"><i class="fas fa-info"></i> <strong>Description:</strong> <%=product.description%></p>
                         <a href="/products/<%= product._id %>" class="btn">Details <i class="fas fa-info-circle"></i></a>
-                        <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                        <% if (isAuthenticated) { %>
+                            <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                            <% } %>
                     </div>
                 <% } %>
             </div>

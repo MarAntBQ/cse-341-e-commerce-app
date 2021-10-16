@@ -12,7 +12,7 @@ exports.getProducts = (req, res, next) => {
         prods: products,
         pageTitle: 'All Products',
         Navpath: 'Products',
-        isAuthenticated: req.isLoggedIn
+        isAuthenticated: req.session.isLoggedIn
       });
     })
     .catch(err => {
@@ -29,7 +29,7 @@ exports.getProduct = (req, res, next) => {
         product: product,
         pageTitle: product.title,
         Navpath: 'Products',
-        isAuthenticated: req.isLoggedIn
+        isAuthenticated: req.session.isLoggedIn
       });
     })
     .catch(err => console.log(err));
@@ -43,7 +43,7 @@ exports.getIndex = (req, res, next) => {
         prods: products,
         pageTitle: 'MABooks',
         Navpath: 'Home',
-        isAuthenticated: req.isLoggedIn
+        isAuthenticated: req.session.isLoggedIn
       });
     })
     .catch(err => {
@@ -62,7 +62,7 @@ exports.getCart = (req, res, next) => {
         Navpath: 'Cart',
         pageTitle: 'Your Cart',
         products: products,
-        isAuthenticated: req.isLoggedIn
+        isAuthenticated: req.session.isLoggedIn
       });
     })
     .catch(err => console.log(err));
@@ -123,7 +123,7 @@ exports.getOrders = (req, res, next) => {
         Navpath: 'Orders',
         pageTitle: 'Your Orders',
         orders: orders,
-        isAuthenticated: req.isLoggedIn
+        isAuthenticated: req.session.isLoggedIn
       });
     })
     .catch(err => console.log(err));
@@ -134,6 +134,6 @@ exports.getCheckout = (req, res, next) => {
     SiteName: GeneralAppName,
     Navpath: 'Checkout',
     pageTitle: 'Checkout',
-    isAuthenticated: req.isLoggedIn
+    isAuthenticated: req.session.isLoggedIn
   });
 };

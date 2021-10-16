@@ -95,6 +95,29 @@ header {
                     color: white;
                 }
             }
+
+            form {
+                display: flex;
+                align-items: center;
+                button {
+                    display: block;
+                    padding: 10px 20px;
+                    //margin: 5px;
+                    text-decoration: none;
+                    text-align: center;
+                    color: black;
+                    transition: 0.3s;
+                    border: 0px;
+                    background: white;
+
+                    &:hover {
+                        background: $color1;
+                        color: white;
+                        cursor: pointer;
+                    }
+                }
+            }
+            
         }
 
         #menu-btn {
@@ -153,6 +176,12 @@ header {
             a {
                 margin: 0px;
                 padding: 15px 20px;
+            }
+        }
+        form {
+            justify-content: center;
+            button {
+                width: 100%;
             }
         }
     }
@@ -260,7 +289,7 @@ main {
     min-height: 100vh;
 }
 
-form {
+.page-form {
     width: 100%;
 
     input {
