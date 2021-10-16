@@ -298,6 +298,12 @@ main .page-section h1 {
 .page-form button:hover {
   background: #AA5E8B;
 }
+.page-form .btn-disable {
+  background: gray;
+}
+.page-form .btn-disable:hover {
+  background: gray;
+}
 
 .book-box {
   background: #f3f3f3;

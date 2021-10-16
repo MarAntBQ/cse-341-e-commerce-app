@@ -342,6 +342,12 @@ main {
             background: $color2;
         }
     }
+    .btn-disable {
+        background: gray;
+        &:hover {
+            background: gray;
+        }
+    }
 }
 
 .book-box {
