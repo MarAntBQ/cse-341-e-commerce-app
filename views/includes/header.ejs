@@ -13,6 +13,7 @@
         <% } %>
         <% if (!isAuthenticated) { %>
         <li><a class="<%= Navpath === 'Login' ? 'active' : '' %>" href="/login">Login <i class="fas fa-key"></i></a></li>
+        <li><a class="<%= Navpath === 'Signup' ? 'active' : '' %>" href="/signup">Signup <i class="fas fa-door-open"></i></a></li>
         <% } else { %> 
             <form action="/logout" method="post">
                 <button type="submit">Logout <i class="fas fa-power-off"></i></button>
