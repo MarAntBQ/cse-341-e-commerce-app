@@ -15,7 +15,11 @@
         </div>
         <div class="page-section">
             <% if (prods.length > 0) {%>
+                <% if (UName != "") { %>
+                    <h1 class="fs40px">Welcome <%= UName %></h1>
+                    <% }  else  { %>
                 <h1 class="fs40px">Our Products</h1>
+                <% } %>
                 <p class="tac tbold mt15px mb15px">List of all available Books</p>
                 <div class="flex-s-a">
                 <% for (let product of prods) { %>

@@ -17,6 +17,10 @@
             <div class="flex-s-a">
                 <div class="box-6 box-i-7 box-m-9 box-p-12">
                     <form class="page-form" action="/signup" method="POST">
+                        <% if(errorMessage) { %>
+                            <div class="tac tbold invalid-message"><%= errorMessage %></div>
+                            <% } %>
+                        <input type="text" placeholder="Insert your Name" name="uName" required>
                         <input type="email" placeholder="Insert your Email" name="email" required>
                         <input type="password" placeholder="Insert password" name="password" required id="password">
                         <input type="password" placeholder="Confirm password" name="confirmPassword" required id="confirmPassword">

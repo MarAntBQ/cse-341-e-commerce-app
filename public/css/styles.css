@@ -469,4 +469,11 @@ footer .copy-links a:hover {
   margin: 10px 0px;
 }
 
+.invalid-message {
+  background: #D886AF;
+  padding: 20px 10px;
+  color: black;
+  border: #2E0F35 1px solid;
+}
+
 /*# sourceMappingURL=styles.css.map */

@@ -535,3 +535,10 @@ footer {
         }
     }
 }
+
+.invalid-message {
+    background: $color4;
+    padding: 20px 10px;
+    color: black;
+    border: $color0 1px solid;
+}

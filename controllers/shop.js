@@ -11,8 +11,7 @@ exports.getProducts = (req, res, next) => {
         SiteName: GeneralAppName,
         prods: products,
         pageTitle: 'All Products',
-        Navpath: 'Products',
-        isAuthenticated: req.session.isLoggedIn
+        Navpath: 'Products'
       });
     })
     .catch(err => {
@@ -28,21 +27,27 @@ exports.getProduct = (req, res, next) => {
         SiteName: GeneralAppName,
         product: product,
         pageTitle: product.title,
-        Navpath: 'Products',
-        isAuthenticated: req.session.isLoggedIn
+        Navpath: 'Products'
       });
     })
     .catch(err => console.log(err));
 };
 
 exports.getIndex = (req, res, next) => {
+ let UserName = "";
+  if(req.user) {
+    UserName = req.user.name;
+  } else {
+    UserName = "";
+  }
   Product.find()
     .then(products => {
       res.render('shop/index', {
         SiteName: GeneralAppName,
         prods: products,
         pageTitle: 'MABooks',
-        Navpath: 'Home'
+        Navpath: 'Home',
+        UName: UserName
       });
     })
     .catch(err => {
@@ -60,8 +65,7 @@ exports.getCart = (req, res, next) => {
         SiteName: GeneralAppName,
         Navpath: 'Cart',
         pageTitle: 'Your Cart',
-        products: products,
-        isAuthenticated: req.session.isLoggedIn
+        products: products
       });
     })
     .catch(err => console.log(err));
@@ -99,6 +103,7 @@ exports.postOrder = (req, res, next) => {
       const order = new Order({
         user: {
           name: req.user.name,
+          email: req.user.email,
           userId: req.user
         },
         products: products
@@ -121,8 +126,7 @@ exports.getOrders = (req, res, next) => {
         SiteName: GeneralAppName,
         Navpath: 'Orders',
         pageTitle: 'Your Orders',
-        orders: orders,
-        isAuthenticated: req.session.isLoggedIn
+        orders: orders
       });
     })
     .catch(err => console.log(err));
@@ -132,7 +136,6 @@ exports.getCheckout = (req, res, next) => {
   res.render('shop/checkout', {
     SiteName: GeneralAppName,
     Navpath: 'Checkout',
-    pageTitle: 'Checkout',
-    isAuthenticated: req.session.isLoggedIn
+    pageTitle: 'Checkout'
   });
 };
