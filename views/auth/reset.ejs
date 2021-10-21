@@ -19,11 +19,9 @@
                     <% if(errorMessage) { %>
                     <div class="tac tbold invalid-message"><%= errorMessage %></div>
                     <% } %>
-                    <form class="page-form" action="/login" method="POST">
+                    <form class="page-form" action="/reset" method="POST">
                         <input type="email" placeholder="Insert your Email" name="email" required>
-                        <input type="password" placeholder="Insert password" name="password" required>
-                        <button type="submit">Login <i class="fas fa-key"></i></button>
-                        <p class="tac"><strong><a href="/signup">Create a new Account!</a></strong> | <strong><a href="/reset">Reset Password</a></strong></p>
+                        <button type="submit">Reset <i class="fas fa-key"></i></button>
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                     </form>
                 </div>
