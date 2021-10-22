@@ -14,13 +14,16 @@
         <div class="page-section">
             <div class="flex-s-a">
                 <div class="box-6 box-i-7 box-m-9 box-p-12">
-                    <form class="page-form" action="/admin/<% if (editing) { %>edit-product<%  } else {  %>add-product<% }%>" method="POST">
-                        <input type="text" placeholder="Insert Book Name" name="title" required value="<% if (editing) { %><%= product.title %><%  }%>">
-                        <input type="number" placeholder="Insert ISBN" name="isbn" required value="<% if (editing) { %><%= product.isbn %><%  }%>">
-                        <input type="number" placeholder="Insert price" name="price" step="0.01" required value="<% if (editing) { %><%= product.price %><%  }%>">
-                        <input type="text" placeholder="Insert Author" name="author" required value="<% if (editing) { %><%= product.author%><%  }%>">
-                        <input type="number" placeholder="Insert Publish Year" name="pyear" required value="<% if (editing) { %><%= product.pyear %><%  }%>">
-                        <textarea name="description" rows="5" placeholder="Insert Book Description" required><% if (editing) { %><%= product.description %><%  }%></textarea>
+                    <% if(errorMessage) { %>
+                        <div class="tac tbold invalid-message"><%= errorMessage %></div>
+                        <% } %>
+                    <form class="page-form" action="/admin/<% if (editing || hasError) { %>edit-product<%  } else {  %>add-product<% }%>" method="POST">
+                        <input class="<%= validationErrors.find(e => e.param === 'title') ? 'invalid' : '' %>" type="text" placeholder="Insert Book Name" name="title" required value="<% if (editing || hasError) { %><%= product.title %><%  }%>">
+                        <input class="<%= validationErrors.find(e => e.param === 'isbn') ? 'invalid' : '' %>" type="number" placeholder="Insert ISBN" name="isbn" required value="<% if (editing || hasError) { %><%= product.isbn %><%  }%>">
+                        <input class="<%= validationErrors.find(e => e.param === 'price') ? 'invalid' : '' %>" type="number" placeholder="Insert price" name="price" step="0.01" required value="<% if (editing || hasError) { %><%= product.price %><%  }%>">
+                        <input class="<%= validationErrors.find(e => e.param === 'author') ? 'invalid' : '' %>" type="text" placeholder="Insert Author" name="author" required value="<% if (editing || hasError) { %><%= product.author%><%  }%>">
+                        <input class="<%= validationErrors.find(e => e.param === 'pyear') ? 'invalid' : '' %>" type="number" placeholder="Insert Publish Year" name="pyear" required value="<% if (editing || hasError) { %><%= product.pyear %><%  }%>">
+                        <textarea class="<%= validationErrors.find(e => e.param === 'descrption') ? 'invalid' : '' %>" name="description" rows="5" placeholder="Insert Book Description" required><% if (editing || hasError) { %><%= product.description %><%  }%></textarea>
                         <% if (editing) { %>
                             <input type="hidden" value="<%= product._id %>" name="productId">
                         <% }%>
