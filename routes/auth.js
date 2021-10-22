@@ -67,6 +67,7 @@ router.post(
         .isAlphanumeric()
         .trim(),
         body('confirmPassword')
+        .trim()
         .custom((value, {
             req
         }) => {
