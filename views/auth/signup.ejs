@@ -20,10 +20,10 @@
                         <% if(errorMessage) { %>
                             <div class="tac tbold invalid-message"><%= errorMessage %></div>
                             <% } %>
-                        <input type="text" placeholder="Insert your Name" name="uName" required>
-                        <input type="email" placeholder="Insert your Email" name="email" required>
-                        <input type="password" placeholder="Insert password" name="password" required id="password">
-                        <input type="password" placeholder="Confirm password" name="confirmPassword" required id="confirmPassword">
+                        <input type="text" placeholder="Insert your Name" name="uName" required value="<%= oldInput.uName %>">
+                        <input class="<%= validationErrors.find(e => e.param === 'email') ?  'invalid' : '' %>" type="email" placeholder="Insert your Email" name="email" required value="<%= oldInput.email %>">
+                        <input class="<%= validationErrors.find(e => e.param === 'password') ?  'invalid' : '' %>" type="password" placeholder="Insert password" name="password" required id="password" value="<%= oldInput.password %>">
+                        <input class="<%= validationErrors.find(e => e.param === 'confirmPassword') ?  'invalid' : '' %>" type="password" placeholder="Confirm password" name="confirmPassword" required id="confirmPassword" value="<%= oldInput.confirmPassword %>">
                         <button type="submit" id="registerBtn" class="btn-disable" disabled>Signup <i class="fas fa-door-open"></i></button>
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                     </form>

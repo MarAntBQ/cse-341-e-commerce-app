@@ -306,6 +306,10 @@ main {
         }
     }
 
+    .invalid {
+        border-color: red;
+    }
+
     textarea {
         width: 100%;
         max-width: 100%;
@@ -346,6 +350,7 @@ main {
         background: gray;
         &:hover {
             background: gray;
+            cursor: wait;
         }
     }
 }

@@ -265,6 +265,9 @@ main .page-section h1 {
 .page-form input:focus {
   border-color: #2E0F35;
 }
+.page-form .invalid {
+  border-color: red;
+}
 .page-form textarea {
   width: 100%;
   max-width: 100%;
@@ -303,6 +306,7 @@ main .page-section h1 {
 }
 .page-form .btn-disable:hover {
   background: gray;
+  cursor: wait;
 }
 
 .book-box {
