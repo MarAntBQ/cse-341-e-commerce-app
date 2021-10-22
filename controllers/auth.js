@@ -3,7 +3,9 @@ const GeneralAppName = "MABooks";
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
-const { validationResult } = require('express-validator');
+const {
+  validationResult
+} = require('express-validator');
 //const sendgridTransport = require('nodemailer-sendgrid-transport');
 
 const User = require('../models/user');
@@ -57,6 +59,17 @@ exports.getSignup = (req, res, next) => {
 exports.postLogin = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.render('auth/login', {
+      SiteName: GeneralAppName,
+      Navpath: 'Login',
+      pageTitle: 'Login',
+      errorMessage: errors.array()[0].msg
+    });
+  }
+
   User.findOne({
       email: email
     })
@@ -101,38 +114,27 @@ exports.postSignup = (req, res, next) => {
       errorMessage: errors.array()[0].msg
     });
   }
-  User.findOne({
-      email: email
+  bcrypt
+    .hash(password, 12)
+    .then(hashedPassword => {
+      const user = new User({
+        name: uName,
+        email: email,
+        password: hashedPassword,
+        cart: {
+          items: []
+        }
+      });
+      return user.save();
     })
-    .then(userDoc => {
-      if (userDoc) {
-        req.flash('error', 'Email exists already, please enter a different one.');
-        return res.redirect('/signup');
-      }
-      return bcrypt.hash(password, 12)
-        .then(hashedPassword => {
-          const user = new User({
-            name: uName,
-            email: email,
-            password: hashedPassword,
-            cart: {
-              items: []
-            }
-          });
-          return user.save();
-        })
-        .then(result => {
-          res.redirect('/login');
-          return transporter.sendMail({
-            to: email,
-            from: "store@cse341.fullstackwebdeveloper.xyz",
-            subject: "Welcome to MABooks",
-            html: '<h1>You successfully signed up!</h1>'
-          });
-        })
-        .catch(err => {
-          console.log(err);
-        });
+    .then(result => {
+      res.redirect('/login');
+      return transporter.sendMail({
+        to: email,
+        from: "store@cse341.fullstackwebdeveloper.xyz",
+        subject: "Welcome to MABooks",
+        html: '<h1>You successfully signed up!</h1>'
+      });
     })
     .catch(err => {
       console.log(err);
@@ -235,24 +237,26 @@ exports.postNewPassword = (req, res, next) => {
   let resetUser;
 
   User.findOne({
-    resetToken: passwordToken,
-    resetTokenExpiration: {$gt: Date.now()},
-    _id: userId
-  })
-  .then(user => {
-    resetUser = user;
-    return bcrypt.hash(newPassword, 12);
-  })
-  .then(hashedPassword => {
-    resetUser.password = hashedPassword;
-    resetUser.resetToken = undefined;
-    resetUser.resetTokenExpiration = undefined;
-    return resetUser.save();
-  })
-  .then(result => {
-    res.redirect('/login');
-  })
-  .catch(err => {
-    console.log(err);
-  });
+      resetToken: passwordToken,
+      resetTokenExpiration: {
+        $gt: Date.now()
+      },
+      _id: userId
+    })
+    .then(user => {
+      resetUser = user;
+      return bcrypt.hash(newPassword, 12);
+    })
+    .then(hashedPassword => {
+      resetUser.password = hashedPassword;
+      resetUser.resetToken = undefined;
+      resetUser.resetTokenExpiration = undefined;
+      return resetUser.save();
+    })
+    .then(result => {
+      res.redirect('/login');
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
