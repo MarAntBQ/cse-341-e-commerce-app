@@ -24,7 +24,8 @@
                         <input type="email" placeholder="Insert your Email" name="email" required>
                         <input type="password" placeholder="Insert password" name="password" required id="password">
                         <input type="password" placeholder="Confirm password" name="confirmPassword" required id="confirmPassword">
-                        <button type="submit" disabled id="registerBtn" class="btn-disable">Signup <i class="fas fa-door-open"></i></button>
+                        <button type="submit" id="registerBtn">Signup <i class="fas fa-door-open"></i></button>
+                        <!-- <button type="submit" id="registerBtn" class="btn-disable" disabled>Signup <i class="fas fa-door-open"></i></button> -->
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                     </form>
                 </div>
@@ -32,7 +33,7 @@
         </div>
     </main>
     <footer>
-        <script>
+        <!-- <script>
             const originPassword = document.getElementById('password');
             const repeatPassword = document.getElementById('confirmPassword');
             originPassword.addEventListener('keyup', HabilitarRegistro);
@@ -50,7 +51,7 @@
                     boton.classList.add("btn-disable");
                 }
             }
-        </script>
+        </script> -->
         <%- include('../includes/footer.ejs')%>
     </footer>
 </body>

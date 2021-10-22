@@ -25,3 +25,5 @@ npm install --save csurf
 npm install --save connect-flash
 
 npm install --save nodemailer nodemailer-sendgrid-transport
+
+npm install --save express-validator
