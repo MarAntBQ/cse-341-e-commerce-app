@@ -17,7 +17,7 @@
                     <% if(errorMessage) { %>
                         <div class="tac tbold invalid-message"><%= errorMessage %></div>
                         <% } %>
-                    <form class="page-form" action="/admin/<% if (editing || hasError) { %>edit-product<%  } else {  %>add-product<% }%>" method="POST">
+                    <form class="page-form" action="/admin/<% if (editing) { %>edit-product<%  } else {  %>add-product<% }%>" method="POST">
                         <input class="<%= validationErrors.find(e => e.param === 'title') ? 'invalid' : '' %>" type="text" placeholder="Insert Book Name" name="title" required value="<% if (editing || hasError) { %><%= product.title %><%  }%>">
                         <input class="<%= validationErrors.find(e => e.param === 'isbn') ? 'invalid' : '' %>" type="number" placeholder="Insert ISBN" name="isbn" required value="<% if (editing || hasError) { %><%= product.isbn %><%  }%>">
                         <input class="<%= validationErrors.find(e => e.param === 'price') ? 'invalid' : '' %>" type="number" placeholder="Insert price" name="price" step="0.01" required value="<% if (editing || hasError) { %><%= product.price %><%  }%>">

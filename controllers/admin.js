@@ -64,6 +64,7 @@ exports.postAddProduct = (req, res, next) => {
       res.redirect('/admin/products');
     })
     .catch(err => {
+      console.log(err);
       // return res.status(500).render('admin/edit-product', {
       //   pageTitle: 'Add Product',
       //   Navpath: 'AddNewProduct',
@@ -81,9 +82,9 @@ exports.postAddProduct = (req, res, next) => {
       //   errorMessage: 'Database operation failed, please try again.',
       //   validationErrors: []
       // });
-      const error = new Error(err);
-      error.httpStatusCode = 500;
-      return next(error);
+      // const error = new Error(err);
+      // error.httpStatusCode = 500;
+      // return next(error);
     });
 };
 

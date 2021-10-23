@@ -289,12 +289,10 @@ exports.postNewPassword = (req, res, next) => {
   let resetUser;
 
   User.findOne({
-      resetToken: passwordToken,
-      resetTokenExpiration: {
-        $gt: Date.now()
-      },
-      _id: userId
-    })
+    resetToken: passwordToken,
+    resetTokenExpiration: { $gt: Date.now() },
+    _id: userId
+  })
     .then(user => {
       resetUser = user;
       return bcrypt.hash(newPassword, 12);
