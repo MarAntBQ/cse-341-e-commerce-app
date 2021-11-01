@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../includes/head.ejs')%>
+</head>
+
+<body>
+    <header>
+        <%- include('../includes/header.ejs')%>
+    </header>
+    <main>
+        <div class="banner">
+            <h1 class="fs70px fs-i-55px fs-m-40px fs-p-30px"><%= pageTitle %></h1>
+        </div>
+        <div class="page-section">
+            <div class="flex-s-a flex-vc">            
+            <% for (let thing of lists) { %> 
+                <div class="box-4 box-m-6 box-p-12 book-box hover-shadow">
+                    <h2><%= thing.name %></h2>
+                    <img src="<%= thing.imageUrl %>" alt="<%= thing.name %>" class="dblock mauto w100p">
+                    <p class="price"><i class="fas fa-dollar-sign"></i> <%= thing.price %></p>
+                    <% for (let tag of thing.tags) { %>
+                        <p><i class="fas fa-dot-circle"></i> <%= tag %></p>
+                    <% } %>
+                    <p class="lh2em"><i class="fas fa-info"></i> <strong>Description:</strong> <%= thing.description %></p>
+                </div>
+            <% } %>
+        </div>
+        </div>
+    </main>
+    <footer>
+        <%- include('../includes/footer.ejs')%>
+    </footer>
+</body>
+
+</html>

@@ -3,6 +3,8 @@ const GeneralAppName = "MABooks";
 const Product = require('../models/product');
 const Order = require('../models/order');
 
+const Informations = require('../models/week8');
+
 exports.getProducts = (req, res, next) => {
   Product.find()
     .then(products => {
@@ -61,6 +63,18 @@ exports.getIndex = (req, res, next) => {
       error.httpStatusCode = 500;
       return next(error);
     });
+};
+
+exports.getWeek8 = (req, res, next) => {
+  Informations.fetchAll((informations) => {
+    res.render('shop/week8', {
+        SiteName: GeneralAppName,
+        lists: informations,
+        pageTitle: 'Week 08 Prove Assignment',
+        Navpath: 'week8'
+    });
+});
+
 };
 
 exports.getCart = (req, res, next) => {
