@@ -547,3 +547,20 @@ footer {
     color: black;
     border: $color0 1px solid;
 }
+
+.pagination {
+    padding: 20px 0px;
+    a {
+        //display: block;
+        padding: 10px;
+        border: 1px solid $color0;
+        margin: 5px;
+        text-decoration: none;
+        color: $color0;
+        transition: 0.3s;
+        &:hover, &.page-active {
+            background: $color0;
+            color: white;
+        }
+    }
+}
